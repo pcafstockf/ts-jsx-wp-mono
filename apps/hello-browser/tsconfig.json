@@ -1,0 +1,26 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		/* Visit https://aka.ms/tsconfig.json to read more about this file */
+
+		"target": "es5",
+		// React targets es5, but you could go higher if you wanted.
+		"module": "commonjs",
+		"esModuleInterop": true,
+		"lib": [
+			"dom"
+		],
+		"jsx": "react",
+		// This is the magic that allows us to nuke babeljs :-)
+		"forceConsistentCasingInFileNames": true,
+		"noImplicitAny": false
+	},
+	"references": [
+		{
+			"path": "./tsconfig.app.json"
+		},
+		{
+			"path": "./tsconfig.spec.json"
+		}
+	]
+}
