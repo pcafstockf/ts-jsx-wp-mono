@@ -39,3 +39,9 @@ Besides all the heft mentioned above, check out this little table describing Git
 -|-|-|-|-|-|-
 |  [M+C+S]("Mocah,Chai,Sinon") | 379 | 52 | 3 | 0 | 6 | 9 |
 That's a *lot* of outstanding defects!  Not to mention the new ones that appear each month.
+
+node_modules for fresh CRA:  
+    224,710,253 bytes (329.2 MB on disk) for 39,884 items
+node_modules for this project (once React,ReactDom,ReactRouter,web-vitals are added):  
+    122,185,262 bytes (152.6 MB on disk) for 12,543 items
+That's a *lot* of extra code that has to run at build / test time.

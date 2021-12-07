@@ -11,6 +11,9 @@ const config = {
 	},
 };
 
-const commonConfig = require(path.join(scriptsDir, 'wpc-common'));
 const envConfig = process.env.NODE_ENV === 'production' ? require(path.join(scriptsDir, 'wpc-prod')) : require(path.join(scriptsDir, 'wpc-dev'));
-module.exports = merge(merge(commonConfig, envConfig), config);
+module.exports = merge(
+	require(path.join(scriptsDir, 'wpc-common')),
+	envConfig,
+	config
+);

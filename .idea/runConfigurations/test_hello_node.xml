@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="test-hello-node" type="NodeJSConfigurationType" application-parameters="--config=apps/hello-node/jasmine.json" node-parameters="--require source-map-support/register  --require ts-node/register/transpile-only  --require tsconfig-paths/register" path-to-js-file="./node_modules/jasmine/bin/jasmine.js" working-dir="$PROJECT_DIR$">
+    <method v="2" />
+  </configuration>
+</component>

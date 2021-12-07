@@ -5,18 +5,25 @@ if ((!process.env.TS_NODE_PROJECT) || (!fs.existsSync(process.env.TS_NODE_PROJEC
 	throw new Error('Environment variable TS_NODE_PROJECT must point to the projects tsconfig.json file');
 
 module.exports = {
+	optimization: {
+		splitChunks: { chunks: "all" }
+	},
 	module: {
-		rules: [{
+		rules: [
+			{
+				test: /\.js$/,
+				enforce: "pre",
+				loader: "source-map-loader"
+			},
+			{
 			test: /\.(js|mjs|jsx|ts|mts|tsx)$/,
-			use: [
-				{
+			use: [{
 					loader: 'ts-loader',
 					options: {
 						transpileOnly: true,    // No need to slow down if we are using a real IDE.
 						configFile: process.env.TS_NODE_PROJECT
 					}
-				}
-			],
+			}],
 			exclude: /node_modules/
 		}]
 	},

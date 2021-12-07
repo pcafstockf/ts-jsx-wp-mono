@@ -1,8 +1,6 @@
-const {merge} = require("webpack-merge");
-const commonConfig = require('./wpc-common');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const webConfig = {
+module.exports = {
 	plugins: [new MiniCssExtractPlugin()],
 	module: {
 		rules: [
@@ -28,4 +26,3 @@ const webConfig = {
 		],
 	}
 };
-module.exports = merge(commonConfig, webConfig);

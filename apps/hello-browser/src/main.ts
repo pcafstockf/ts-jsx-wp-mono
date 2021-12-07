@@ -1,4 +1,4 @@
-import {hello} from './greet'; // Modular Stylesheet
+import {hello} from './greet';
 
 // This is a quick little hack to demonstrate TypeScript's downleveling to es5.
 // If your tsconfig targets es5 (which this does), the emitted code will be a function, not an arrow function.

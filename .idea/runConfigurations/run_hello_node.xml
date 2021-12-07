@@ -1,0 +1,5 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="run-hello-node" type="NodeJSConfigurationType" node-parameters="--require source-map-support/register  --require ts-node/register/transpile-only  --require tsconfig-paths/register" path-to-js-file="apps/hello-node/src/main.ts" working-dir="$PROJECT_DIR$">
+    <method v="2" />
+  </configuration>
+</component>
