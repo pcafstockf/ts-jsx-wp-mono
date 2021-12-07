@@ -6,14 +6,19 @@ const scriptsDir = path.resolve('scripts');
 process.env.TS_NODE_PROJECT = process.env.TS_NODE_PROJECT || path.resolve(__dirname, process.env.NODE_ENV === 'test' ? 'tsconfig.spec.json' : 'tsconfig.app.json');
 
 const config = {
-	entry: path.join(__dirname, 'src/main.ts'),
+	entry: path.join(__dirname, 'src/index.tsx'),
 	output: {
 		path: path.resolve(__dirname, '../../', 'build', 'hello-browser')
 	},
+	devServer: {
+		static: [path.join(__dirname, 'public')],
+	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			title: 'Hello',
+			title: 'Faster React',
 			template: path.join(__dirname, 'public/index.html'),
+			favicon: path.join(__dirname, 'public/favicon.ico'),
+			manifest: path.join(__dirname, 'public/manifest.json')
 		})
 	]
 };

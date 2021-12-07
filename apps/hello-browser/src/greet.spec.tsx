@@ -1,6 +1,6 @@
-import {hello} from './greet';
-
-declare var ReactDOM;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Hello} from './greet';
 
 describe('Greet', function () {
 	beforeAll(() => {
@@ -10,13 +10,10 @@ describe('Greet', function () {
 	});
 
 	it('is location aware', function () {
-		ReactDOM.render(
-			hello('jasmine'),
-			document.getElementById('hello-root')
-		);
+		ReactDOM.render(<Hello location={'karma'} />, document.getElementById('hello-root'));
 		let elem = document.querySelector('div.rot-me');
 		expect(elem).toBeTruthy();
 		// @ts-ignore
-		expect((elem as HTMLElement).innerText).toEqual('Hello jasmine!');
+		expect((elem as HTMLElement).innerText).toEqual('Hello karma!');
 	});
 });

@@ -29,8 +29,6 @@ module.exports = function (config) {
 			suppressAll: true // removes the duplicated traces
 		},
 		files: [
-			'https://unpkg.com/react@17/umd/react.development.js',
-			'https://unpkg.com/react-dom@17/umd/react-dom.development.js',
 			{pattern: 'src/**/*.spec.@(js|mjs|jsx|ts|tsx)', watched: false},  // Webpack does the watching.
 		],
 		port: 9876,

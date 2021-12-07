@@ -9,7 +9,7 @@ Want to avoid the bloat and compatibility issues of Jest?
 Prefer Webpack 5 (faster, smaller, than v4)?
 Want to support es6+ targets (smaller executables)?
 
-This project is a starter template for a TypeScript/JSX/Webpack/Monorepo.
+This project is a starter template for a TypeScript based React Monorepo.
 You can quickly delete any aspect of this template you don't like, but out of the box, it supports everything you need for a Monorepo, TypeScript based React application.
 Additionally, you get all the great features of Webpack v5 (speed, size, code splitting, and more).
 If jest is your cup of tea, you can add it easily enough.  However, if you are not a fan, this project provides a lightweight, highly compatible, real world test environment using karma and jasmine.
@@ -24,3 +24,5 @@ Babel is a great tool, but if you are already using TypeScript, you will get gre
 
 Lerna and Nx are great monorepo tools.  But if you needs are relatively simple, they may be more overhead and complexity than you want in your project.
 This project takes inspiration from Lerna and Nx layouts, but skips the extra tools and scripts, and just manages everything by passing qualified pathnames to tools like webpack and karma.
+
+The one caveat to note is that public/index.html in typical React apps 

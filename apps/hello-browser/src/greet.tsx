@@ -1,8 +1,7 @@
+import React from 'react';
 import {Location} from '@ts-wb-mono/common';
 import './greet.scss';
 
-declare var React;
-
-export function hello(location: string = Location) {
-	return (<div className="rot-me">{`Hello ${location}!`}</div>);
-}
+export const Hello: React.FC<{ location?: string }> = (props) => {
+	return (<div className="rot-me">{`Hello ${props.location || Location}!`}</div>);
+};
