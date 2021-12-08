@@ -1,6 +1,8 @@
 const path = require('path');
 const {merge} = require('webpack-merge');
+const {WebpackManifestPlugin} = require('webpack-manifest-plugin');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 const scriptsDir = path.resolve('scripts');
 
 process.env.TS_NODE_PROJECT = process.env.TS_NODE_PROJECT || path.resolve(__dirname, process.env.NODE_ENV === 'test' ? 'tsconfig.spec.json' : 'tsconfig.app.json');
@@ -8,17 +10,21 @@ process.env.TS_NODE_PROJECT = process.env.TS_NODE_PROJECT || path.resolve(__dirn
 const config = {
 	entry: path.join(__dirname, 'src/index.tsx'),
 	output: {
-		path: path.resolve(__dirname, '../../', 'build', 'hello-browser')
+		publicPath: "/",
+		path: path.resolve(path.join('build', 'hello-browser'))
 	},
 	devServer: {
-		static: [path.join(__dirname, 'public')],
+		historyApiFallback: true,
+		static: [path.resolve(__dirname, 'static')],
 	},
 	plugins: [
+		new CopyPlugin({
+			patterns: [{from: path.resolve(__dirname, 'static')}]
+		}),
+		new WebpackManifestPlugin(),
 		new HtmlWebpackPlugin({
-			title: 'Faster React',
-			template: path.join(__dirname, 'public/index.html'),
-			favicon: path.join(__dirname, 'public/favicon.ico'),
-			manifest: path.join(__dirname, 'public/manifest.json')
+			filename: 'index.html',
+			template: path.resolve(__dirname, 'src', 'index.ejs')
 		})
 	]
 };
