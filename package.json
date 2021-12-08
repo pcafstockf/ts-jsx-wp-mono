@@ -9,7 +9,7 @@
 		"start:hello-browser": "NODE_ENV=development webpack-dev-server --config=./apps/hello-browser/webpack.config.js",
 		"build:hello-browser": "NODE_ENV=production webpack --config=./apps/hello-browser/webpack.config.js",
 		"test:hello-browser": "karma start apps/hello-browser/karma.conf.js",
-		"start:hello-node": "NODE_ENV=development ts-node -r tsconfig-paths/register --transpile-only --project ./apps/hello-node/tsconfig.json ./apps/hello-node/src/main.ts",
+		"start:hello-node": "NODE_ENV=development ts-node -r tsconfig-paths/register --transpile-only --project apps/hello-node/tsconfig.json apps/hello-node/src/main.ts",
 		"build:hello-node": "NODE_ENV=production webpack --config=./apps/hello-node/webpack.config.js",
 		"test:hello-node": "node --require source-map-support/register --require ts-node/register/transpile-only --require tsconfig-paths/register  ./node_modules/jasmine/bin/jasmine.js --config=apps/hello-node/jasmine.json"
 	},
@@ -24,7 +24,8 @@
 	},
 	"devDependencies": {
 		"@types/jasmine": "~3.10.2",
-		"@types/node": "~16.11.11",
+		"@types/node": "~16.11.12",
+		"copy-webpack-plugin": "~10.0.0",
 		"css-loader": "~6.5.1",
 		"html-webpack-plugin": "~5.5.0",
 		"jasmine": "~3.10.0",
@@ -38,7 +39,7 @@
 		"karma-webpack": "~5.0.0",
 		"mini-css-extract-plugin": "~2.4.5",
 		"node-sass": "~6.0.1",
-		"sass-loader": "~12.3.0",
+		"sass-loader": "~12.4.0",
 		"source-map-loader": "~3.0.0",
 		"source-map-support": "~0.5.21",
 		"style-loader": "~3.3.1",
@@ -51,6 +52,7 @@
 		"webpack": "~5.65.0",
 		"webpack-cli": "~4.9.1",
 		"webpack-dev-server": "~4.6.0",
+		"webpack-manifest-plugin": "~4.0.2",
 		"webpack-merge": "~5.8.0"
 	}
 }
