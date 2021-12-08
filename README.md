@@ -17,7 +17,7 @@ If jest is your cup of tea, you can add it easily enough.  However, if you are n
 This is a general purpose project, but it was also designed to significantly reduce heft, build times, and breakage on new React projects.
 The secret is that babeljs is completely unnecessary for most React projects.  
 
-I drank the entire cooler of Kool-Aid the day Google announced they would be working with Microsoft's TypeScript efforts! And I've never regreted it :-)
+I drank the entire cooler of TypeScript Kool-Aid the day Google announced they would be working with Microsoft's on the language! And I've never regreted it :-)
 TypeScript is capable of compiling all your JSX files, *and* it can target es5 (or any other es) all on it's own.
 Create-React-App actually only runs TypeScript for type checking purposes (isn't that why you have an IDE?).  All the code generation is done by babblejs.
 Babel is a great tool, but if you are already using TypeScript, you will get greater compatibility and speed by *only* using TypeScript.
