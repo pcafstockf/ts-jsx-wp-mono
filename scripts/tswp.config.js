@@ -13,16 +13,10 @@ class TswpConfig {
 		*/
 		this.supportScss = true;
 		/*
-			Allow webpack to automatically generate an index.html file.
-			Note that the 'indexTemplate' property of this object can be used to optionally specify a source *template* that will be used to generate the ultimate index.html output.
-		*/
-		this.generateIndexHtml = true;
-		/*
-			Will be used as the input when generating an 'index.html' output (default is undefined).  See:
+			Configure webpack to automatically generate an index.html file (default is to generate).  See:
 				https://webpack.js.org/plugins/html-webpack-plugin/
-			If set, this.generateIndexHtml is ignored and treated as if it were true.
 		*/
-		this.indexTemplate = undefined;
+		this.indexHtmlOptions = {filename: 'index.html'};
 		/*
 			Allow webpack to automatically generate a manifest.json file.
 		*/
