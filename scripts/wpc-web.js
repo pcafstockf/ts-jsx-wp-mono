@@ -50,14 +50,8 @@ if (tswpConfig.staticCopyPatterns) {
 	);
 }
 
-if (tswpConfig.generateIndexHtml || this.indexTemplate) {
-	const pconf = {
-		filename: 'index.html'
-	}
-	if (tswpConfig.indexTemplate)
-		pconf.template = tswpConfig.indexTemplate;
-	module.exports.plugins.push(new HtmlWebpackPlugin(pconf));
-}
+if (tswpConfig.indexHtmlOptions)
+	module.exports.plugins.push(new HtmlWebpackPlugin(tswpConfig.indexHtmlOptions));
 
 if (tswpConfig.generateManifest)
 	module.exports.plugins.push(new WebpackManifestPlugin());
