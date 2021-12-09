@@ -1,10 +1,27 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const {WebpackManifestPlugin} = require("webpack-manifest-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const tswpConfig = require('./tswp.config');
 
 module.exports = {
-	plugins: [new MiniCssExtractPlugin()],
+	output: {
+		publicPath: "/"
+	},
+	plugins: [],
 	module: {
-		rules: [
-			{
+		rules: [],
+	}
+};
+if (process.env.NODE_ENV !== 'production')
+	module.exports.devServer = {historyApiFallback: true};
+
+if (tswpConfig.staticServeDir)
+	module.exports.devServer.static = tswpConfig.staticServeDir;
+
+if (tswpConfig.supportScss) {
+	module.exports.plugins.push(new MiniCssExtractPlugin());
+	module.exports.module.rules.push({
 				test: /\.s[ac]ss$/i,
 				use: [
 					// fallback to style-loader in development
@@ -22,7 +39,25 @@ module.exports = {
 						},
 					},
 				],
-			},
-		],
+	});
+}
+
+if (tswpConfig.staticCopyPatterns) {
+	module.exports.plugins.push(
+		new CopyPlugin({
+			patterns: tswpConfig.staticCopyPatterns
+		})
+	);
+}
+
+if (tswpConfig.generateIndexHtml || this.indexTemplate) {
+	const pconf = {
+		filename: 'index.html'
 	}
-};
+	if (tswpConfig.indexTemplate)
+		pconf.template = tswpConfig.indexTemplate;
+	module.exports.plugins.push(new HtmlWebpackPlugin(pconf));
+}
+
+if (tswpConfig.generateManifest)
+	module.exports.plugins.push(new WebpackManifestPlugin());
