@@ -1,12 +1,15 @@
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const fs = require("fs");
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const tswpConfig = require('./tswp.config');
 
-if ((!process.env.TS_NODE_PROJECT) || (!fs.existsSync(process.env.TS_NODE_PROJECT)))
-	throw new Error('Environment variable TS_NODE_PROJECT must point to the projects tsconfig.json file');
+if ((!tswpConfig.tsnodeProject) || (!fs.existsSync(tswpConfig.tsnodeProject)))
+	throw new Error('"tswp.config" property "tsnodeProject" must point to a project\'s tsconfig.json file');
 
 module.exports = {
 	optimization: {
-		splitChunks: { chunks: "all" }
+		splitChunks: {
+			chunks: "all"
+		}
 	},
 	module: {
 		rules: [
@@ -21,10 +24,10 @@ module.exports = {
 					loader: 'ts-loader',
 					options: {
 						transpileOnly: true,    // No need to slow down if we are using a real IDE.
-						configFile: process.env.TS_NODE_PROJECT
+						configFile: tswpConfig.tsnodeProject
 					}
 			}],
-			exclude: /node_modules/
+				exclude: tswpConfig.tsnodeExclude
 		}]
 	},
 	resolve: {
@@ -33,7 +36,7 @@ module.exports = {
 		],
 		extensions: ['.tsx', '.ts', '.jsx', '.js'],
 		plugins: [
-			new TsconfigPathsPlugin({configFile: process.env.TS_NODE_PROJECT}),
+			new TsconfigPathsPlugin({configFile: tswpConfig.tsnodeProject}),
 		]
 	}
 }
