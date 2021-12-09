@@ -7,13 +7,13 @@ tswpConfig.tsnodeProject = process.env.TS_NODE_PROJECT || path.resolve(__dirname
 const config = {
 	entry: path.join(__dirname, 'src/main.ts'),
 	output: {
-		path: path.resolve(__dirname, '../../', 'build', 'hello-node')
+		path: path.resolve('build', 'hello-node')
 	},
 };
 
-const envConfig = process.env.NODE_ENV === 'production' ? require(path.join('scripts', 'wpc-prod')) : require(path.join('scripts', 'wpc-dev'));
+const envConfig = process.env.NODE_ENV === 'production' ? require(path.resolve('scripts', 'wpc-prod')) : require(path.resolve('scripts', 'wpc-dev'));
 module.exports = merge(
-	require(path.join('scripts', 'wpc-common')),
+	require(path.resolve('scripts', 'wpc-common')),
 	envConfig,
 	config
 );
