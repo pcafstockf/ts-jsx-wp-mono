@@ -4,6 +4,9 @@ const tswpConfig = require('./tswp.config');
 
 if ((!tswpConfig.tsnodeProject) || (!fs.existsSync(tswpConfig.tsnodeProject)))
 	throw new Error('"tswp.config" property "tsnodeProject" must point to a project\'s tsconfig.json file');
+// if env is defined, TsconfigPathsPlugin completely ignores the options that were passed to it (below).
+// We could 'delete' (https://github.com/dividab/tsconfig-paths-webpack-plugin/issues/45), but this better ensures consistency.
+process.env.TS_NODE_PROJECT = path.resolve(tswpConfig.tsnodeProject);
 
 module.exports = {
 	optimization: {
