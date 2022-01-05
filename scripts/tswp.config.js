@@ -48,6 +48,11 @@ class TswpConfig {
 				https://webpack.js.org/plugins/copy-webpack-plugin/
 		 */
 		this.staticServeDir = undefined;
+
+		/*
+		 *  If defined, this configuration will be passed to the webpack.DefinePlugin.
+		 */
+		this.preDefines = undefined;
 	}
 }
 
