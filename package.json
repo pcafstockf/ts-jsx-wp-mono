@@ -6,11 +6,11 @@
 	"license": "MIT",
 	"scripts": {
 		"build": "npm run build:hello-node && npm run build:hello-browser",
-		"start:hello-browser": "NODE_ENV=development webpack-dev-server --config=./apps/hello-browser/webpack.config.js",
-		"build:hello-browser": "NODE_ENV=production webpack --config=./apps/hello-browser/webpack.config.js",
+		"start:hello-browser": "cross-env NODE_ENV=development webpack-dev-server --config=./apps/hello-browser/webpack.config.js",
+		"build:hello-browser": "cross-env NODE_ENV=production webpack --config=./apps/hello-browser/webpack.config.js",
 		"test:hello-browser": "karma start apps/hello-browser/karma.conf.js",
-		"start:hello-node": "NODE_ENV=development ts-node -r tsconfig-paths/register --transpile-only --project apps/hello-node/tsconfig.json apps/hello-node/src/main.ts",
-		"build:hello-node": "NODE_ENV=production webpack --config=./apps/hello-node/webpack.config.js",
+		"start:hello-node": "cross-env NODE_ENV=development ts-node -r tsconfig-paths/register --transpile-only --project apps/hello-node/tsconfig.json apps/hello-node/src/main.ts",
+		"build:hello-node": "cross-env NODE_ENV=production webpack --config=./apps/hello-node/webpack.config.js",
 		"test:hello-node": "node --require source-map-support/register --require ts-node/register/transpile-only --require tsconfig-paths/register  ./node_modules/jasmine/bin/jasmine.js --config=apps/hello-node/jasmine.json"
 	},
 	"keywords": [
@@ -26,6 +26,7 @@
 		"@types/jasmine": "~3.10.2",
 		"@types/node": "~16.11.12",
 		"copy-webpack-plugin": "~10.0.0",
+		"cross-env": "~7.0.3",
 		"css-loader": "~6.5.1",
 		"html-webpack-plugin": "~5.5.0",
 		"jasmine": "~3.10.0",

@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require("fs");
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const tswpConfig = require('./tswp.config');
