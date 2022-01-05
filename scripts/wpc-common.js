@@ -1,5 +1,6 @@
 const path = require('path');
 const fs = require("fs");
+const webpack = require('webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const tswpConfig = require('./tswp.config');
 
@@ -34,6 +35,8 @@ module.exports = {
 				exclude: tswpConfig.tsnodeExclude
 		}]
 	},
+	plugins: [
+	],
 	resolve: {
 		modules: [
 			'node_modules'
@@ -44,3 +47,6 @@ module.exports = {
 		]
 	}
 }
+
+if (tswpConfig.preDefines && Object.keys(tswpConfig.preDefines).length > 0)
+	module.exports.plugins.unshift(new webpack.DefinePlugin(tswpConfig.preDefines));

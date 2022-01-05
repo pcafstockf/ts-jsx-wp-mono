@@ -7,8 +7,12 @@ tswpConfig.tsnodeProject = process.env.TS_NODE_PROJECT || path.resolve(__dirname
 tswpConfig.indexHtmlOptions.template = path.resolve(__dirname, 'src', 'index.ejs');
 tswpConfig.staticCopyPatterns = [{from: path.resolve(__dirname, 'static')}];
 tswpConfig.staticServeDir = [path.resolve(__dirname, 'static')];
+tswpConfig.preDefines = {
+	['pre_defines.CODE_ENV']: JSON.stringify(process.env.NODE_ENV)
+};
 
 const config = {
+	target: ['web', 'es5'],
 	entry: path.join(__dirname, 'src/index.tsx'),
 	output: {
 		path: path.resolve('build', 'hello-browser')
