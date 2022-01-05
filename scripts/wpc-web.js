@@ -13,11 +13,12 @@ module.exports = {
 		rules: [],
 	}
 };
-if (process.env.NODE_ENV !== 'production')
+if (process.env.NODE_ENV !== 'production') {
 	module.exports.devServer = {historyApiFallback: true};
 
-if (tswpConfig.staticServeDir)
+	if (tswpConfig.staticServeDir)
 	module.exports.devServer.static = tswpConfig.staticServeDir;
+}
 
 if (tswpConfig.supportScss) {
 	module.exports.plugins.push(new MiniCssExtractPlugin());
